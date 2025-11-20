@@ -1,0 +1,15 @@
+{
+  "name": "baggage",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$path": "src/Shared"
+    },
+    "ServerScriptService": {
+      "$path": "src/Server"
+    },
+    "StarterGui": {
+      "$path": "src/Gui"
+    }
+  }
+}
