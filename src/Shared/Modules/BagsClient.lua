@@ -78,6 +78,7 @@ end
 function Bags.Destroy(self:Bag)
     self.Model:Destroy()
     EmitEnd:Emit(Settings.EmitCount)
+    if self.ClickEvent then self.ClickEvent:Disconnect() end
     CurrentBags[self.ID] = nil
 end
 
