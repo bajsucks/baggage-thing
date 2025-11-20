@@ -49,11 +49,15 @@ function module.new(self:Bag, DisableEmit:boolean?)
     primary.Material = self.Material
     self.Model = model
     setmetatable(self, Bags)
-    CurrentBags[self.ID] = self
     if not DisableEmit then
         EmitStart:Emit(Settings.EmitCount)
     end
-
+    local click: ClickDetector = model.click
+    self.ClickEvent = click.MouseClick:Connect(function()
+        ReplicatedStorage.Remotes.Baggage.BagClick:FireServer(self.ID)
+        print(self.ID)
+    end)
+    CurrentBags[self.ID] = self
     return self
 end
 

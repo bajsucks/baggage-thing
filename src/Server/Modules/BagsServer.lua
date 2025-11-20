@@ -2,6 +2,7 @@ local module = {}
 local Bags = {}
 Bags.__index = Bags
 local CurrentBags = {}
+module.CurrentBags = CurrentBags
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 

@@ -45,3 +45,7 @@ RunService.Heartbeat:Connect(function(dt)
         end
     end
 end)
+
+ReplicatedStorage.Remotes.Baggage.BagClick.OnServerEvent:Connect(function(_, ID)
+    print(ID)
+end)
