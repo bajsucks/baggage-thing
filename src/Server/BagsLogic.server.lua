@@ -27,10 +27,21 @@ ReplicatedStorage.Remotes.Baggage.SpawnDelay.OnServerEvent:Connect(function(Play
     end
 end)
 local totaldt = 0
+
+local Conveyor: Model = workspace.Conveyor
 RunService.Heartbeat:Connect(function(dt)
     totaldt += dt
     if totaldt >= Settings.SpawnDelay then
         BagModule.new()
         totaldt = 0
+    end
+    local t = workspace:GetServerTimeNow()
+    for _, self in BagModule.CurrentBags do 
+        local ConveyorLength = Conveyor.PrimaryPart.Size.Z
+        local BagLifetime = t - self.SpawnTime
+        local DeathTime = self.SpawnTime + self.Speed / ConveyorLength
+        if BagLifetime >= DeathTime then
+            self:Destroy()
+        end
     end
 end)
