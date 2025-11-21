@@ -70,15 +70,18 @@ function Bags.UpdatePosition(self:Bag)
         return
     end  
     local ConveyorPivot = Conveyor.PrimaryPart:GetPivot()
+    ConveyorPivot += (ConveyorPivot.UpVector * Conveyor.PrimaryPart.Size.Y)/2
     local StartPivot = ConveyorPivot - ConveyorPivot.LookVector * (ConveyorLength / 2)
-    -- could just put pivot on the start but it'll make great pain for whoever sets this conveyor up
+    -- Argon moment
     self.Model:PivotTo((StartPivot + ConveyorPivot.LookVector * TravelDistance) * CFrame.Angles(0, self.Rotation, 0))
 end
 
 function Bags.Destroy(self:Bag)
     self.Model:Destroy()
     EmitEnd:Emit(Settings.EmitCount)
-    if self.ClickEvent then self.ClickEvent:Disconnect() end
+    if self.ClickEvent then
+        self.ClickEvent:Disconnect()
+    end
     CurrentBags[self.ID] = nil
 end
 

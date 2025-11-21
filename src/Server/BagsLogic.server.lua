@@ -28,7 +28,15 @@ ReplicatedStorage.Remotes.Baggage.SpawnDelay.OnServerEvent:Connect(function(Play
 end)
 local totaldt = 0
 
-local Conveyor: Model = workspace.Conveyor
+local Conveyor: Model = ReplicatedStorage.Assets.Baggage.Conveyor:Clone()
+local End: Part = ReplicatedStorage.Assets.Baggage.End:Clone()
+local Start: Part = ReplicatedStorage.Assets.Baggage.Start:Clone()
+local Bagsf = Instance.new("Folder")
+Bagsf.Name = "Bags"
+Bagsf.Parent = workspace
+Conveyor.Parent = workspace
+End.Parent = workspace
+Start.Parent = workspace
 RunService.Heartbeat:Connect(function(dt)
     totaldt += dt
     if totaldt >= Settings.SpawnDelay then
