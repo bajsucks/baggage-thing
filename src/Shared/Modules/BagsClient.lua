@@ -93,12 +93,16 @@ Remotes.BagSpawn.OnClientEvent:Connect(function(bag:Bag)
 end)
 
 for _, bag in Remotes.GetBags:InvokeServer() do
+    local pass = true
     for ID, _ in CurrentBags do
-        if ID == bag.ID then break end
+        if ID == bag.ID then
+            pass = false
+            break
+        end
     end
-    module.new(bag, true)
-
+    if pass then
+        module.new(bag, true)
+    end
 end
--- t
 
 return module

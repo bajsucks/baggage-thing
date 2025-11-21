@@ -13,6 +13,13 @@
     },
     "Workspace": {
       "$path": "src/Workspace"
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "Brightness": 3,
+        "GlobalShadows": true
+      }
     }
   }
 }

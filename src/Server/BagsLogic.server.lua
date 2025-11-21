@@ -29,8 +29,11 @@ end)
 local totaldt = 0
 
 local Conveyor: Model = ReplicatedStorage.Assets.Baggage.Conveyor:Clone()
+Conveyor.PrimaryPart = Conveyor.Belt
 local End: Part = ReplicatedStorage.Assets.Baggage.End:Clone()
 local Start: Part = ReplicatedStorage.Assets.Baggage.Start:Clone()
+local Bag = ReplicatedStorage.Assets.Baggage.Bag
+Bag.PrimaryPart = Bag.body
 local Bagsf = Instance.new("Folder")
 Bagsf.Name = "Bags"
 Bagsf.Parent = workspace
